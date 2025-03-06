@@ -13,22 +13,29 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.blue,
         body: Center(
-          child: Container(
-            alignment: Alignment.center,
-            height: 200,
-            width: 300,
-            color: Colors.amber,
-            child: Padding(
-              padding: const EdgeInsets.all(26),
-              child: Text(
-                'Hello World 3',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                height: 200,
+                width: 300,
+                color: Colors.amber,
+                child: Padding(
+                  padding: const EdgeInsets.all(26),
+                  child: Text(
+                    'Hello World 3',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              const SizedBox(height: 23),
+              ElevatedButton(onPressed: () {}, child: Text("Press me")),
+            ],
           ),
         ),
       ),
