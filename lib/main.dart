@@ -20,7 +20,14 @@ class MainApp extends StatelessWidget {
             color: Colors.amber,
             child: Padding(
               padding: const EdgeInsets.all(26),
-              child: Text('Hello World 3'),
+              child: Text(
+                'Hello World 3',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),
