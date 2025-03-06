@@ -1,11 +1,27 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  String _welcome = "";
+
+  @override
+  void initState() {
+    _getWelcomeMessage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +51,24 @@ class MainApp extends StatelessWidget {
               ),
               const SizedBox(height: 23),
               ElevatedButton(onPressed: () {}, child: Text("Press me")),
+              const SizedBox(height: 23),
+              Text(_welcome)
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future _getWelcomeMessage() async {
+    try {
+      final response = await Dio().get("https://grocery-app-1h07.onrender.com");
+      if (response.statusCode == 200) {
+        _welcome = response.data;
+        setState(() {});
+      }
+    } catch (e) {
+      log("Error: - ${e.toString()}");
+    }
   }
 }
